@@ -55,10 +55,17 @@ php artisan make:seeder UsersTableSeeder && ping 127.0.0.1 -n 2 > nul
 
   php artisan make:seeder CategoryTableSeeder  && ping 127.0.0.1 -n 2 > nul
   php artisan make:seeder ProductTableSeeder   && ping 127.0.0.1 -n 2 > nul
+  #curso 06
+  php artisan make:seeder UserTableSeeder   && ping 127.0.0.1 -n 2 > nul
+
 
  #-----------------------------------------------------------------
  #-----------Crear Middleware
  #-----------------------------------------------------------------
+
+ php artisan migrate:refresh --seed
+
+
  php artisan make:middleware IsSuperAdmin
  php artisan make:middleware IsStore
  php artisan make:middleware IsLocal

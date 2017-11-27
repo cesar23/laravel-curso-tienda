@@ -16,6 +16,7 @@
                     <tr><td>Correo:</td><td>{{ Auth::user()->email }}</td></tr>
                     <tr><td>Dirección:</td><td>{{ Auth::user()->address }}</td></tr>
                 </table>
+
             </div>
             <div class="table-responsive">
                 <h3>Datos del pedido</h3>
@@ -45,9 +46,9 @@
                         <i class="fa fa-chevron-circle-left"></i> Regresar
                     </a>
 
-                    <a href="{{ route('payment') }}" class="btn btn-warning">
-                        Pagar con <i class="fa fa-cc-paypal fa-2x"></i>
-                    </a>
+                    {{--<a href="{{ route('payment') }}" class="btn btn-warning">--}}
+                        {{--Pagar con <i class="fa fa-cc-paypal fa-2x"></i>--}}
+                    {{--</a>--}}
                 </p>
             </div>
         </div>
