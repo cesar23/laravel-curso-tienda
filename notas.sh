@@ -75,3 +75,8 @@ php artisan make:controller  WebServiceController -r
 
 php artisan make:controller  StoreController -r
 php artisan make:controller  CardController -r
+
+#------actualizar  repo
+git add -A
+git commit -am"actualizacion"
+git push origin master
