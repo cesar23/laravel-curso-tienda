@@ -139,3 +139,4 @@ Route::get('cart/update/{product_slug}/{quantity}', [
 //        'uses' => 'OrderController@destroy'
 //    ]);
 //});
+
