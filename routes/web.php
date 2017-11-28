@@ -88,33 +88,9 @@ Route::get('order-detail', [
 
 
 
-// Authentication routes...
-Route::get('auth/login', [
-    'as' => 'login-get',
-    'uses' => 'Auth\AuthController@getLogin'
-]);
-
-Route::post('auth/login', [
-    'as' => 'login-post',
-    'uses' => 'Auth\AuthController@postLogin'
-]);
-
-Route::get('auth/logout', [
-    'as' => 'logout',
-    'uses' => 'Auth\AuthController@getLogout'
-]);
 
 
-// Registration routes...
-Route::get('auth/register', [
-    'as' => 'register-get',
-    'uses' => 'Auth\AuthController@getRegister'
-]);
 
-Route::post('auth/register', [
-    'as' => 'register-post',
-    'uses' => 'Auth\AuthController@postRegister'
-]);
 
 
 
@@ -129,6 +105,19 @@ Route::get('payment/status', array(
     'as' => 'payment.status',
     'uses' => 'PaypalController@getPaymentStatus',
 ));
+
+//----------------------------------------------------------- ADMIN
+
+Route::get('admin/home', ['as' => 'admin.home', function () {
+    //return "dd";
+    return view('admin.home');
+}]);
+
+
+
+Route::resource('admin/category', 'Admin\CategoryController');
+
+//Route::resource('category', 'CategoryController');
 
 //Route::get('order-detail', [
 //    'middleware' => 'auth:user',
@@ -194,6 +183,6 @@ Route::get('payment/status', array(
 
 Auth::routes();
 
-Route::get('/logout', ['as' => 'logout', 'uses' => 'PageController@logOut']);
+//Route::get('/logout', ['as' => 'logout', 'uses' => 'PageController@logOut']);
 
 //Route::get('/home', 'HomeController@index')->name('home');
