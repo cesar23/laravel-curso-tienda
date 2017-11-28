@@ -36,7 +36,7 @@
                         </tr>
                     @endforeach
                 </table><hr>
-                <h3>
+                <h3>n
 					<span class="label label-success">
 						Total: ${{ number_format($total, 2) }}
 					</span>
@@ -46,9 +46,9 @@
                         <i class="fa fa-chevron-circle-left"></i> Regresar
                     </a>
 
-                    {{--<a href="{{ route('payment') }}" class="btn btn-warning">--}}
-                        {{--Pagar con <i class="fa fa-cc-paypal fa-2x"></i>--}}
-                    {{--</a>--}}
+                    <a href="{{ route('payment') }}" class="btn btn-warning">
+                        Pagar con <i class="fa fa-cc-paypal fa-2x"></i>
+                    </a>
                 </p>
             </div>
         </div>

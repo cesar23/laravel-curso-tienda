@@ -118,6 +118,18 @@ Route::post('auth/register', [
 
 
 
+//------------------------------------------------------------- Paypal
+// Enviamos nuestro pedido a PayPal
+Route::get('payment', array(
+    'as' => 'payment',
+    'uses' => 'PaypalController@postPayment',
+));
+// Después de realizar el pago Paypal redirecciona a esta ruta
+Route::get('payment/status', array(
+    'as' => 'payment.status',
+    'uses' => 'PaypalController@getPaymentStatus',
+));
+
 //Route::get('order-detail', [
 //    'middleware' => 'auth:user',
 //    'as' => 'order-detail',
@@ -184,4 +196,4 @@ Auth::routes();
 
 Route::get('/logout', ['as' => 'logout', 'uses' => 'PageController@logOut']);
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

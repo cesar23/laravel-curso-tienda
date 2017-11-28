@@ -57,6 +57,11 @@ php artisan make:seeder UsersTableSeeder && ping 127.0.0.1 -n 2 > nul
   php artisan make:seeder ProductTableSeeder   && ping 127.0.0.1 -n 2 > nul
   #curso 06
   php artisan make:seeder UserTableSeeder   && ping 127.0.0.1 -n 2 > nul
+  #curso 07 --instalar paypal
+  composer require paypal/rest-api-sdk-php
+  php artisan make:controller  PaypalController -r
+  php artisan make:model Order -m
+  php artisan make:model OrderItem -m
 
 
  #-----------------------------------------------------------------
