@@ -6,7 +6,7 @@
 		<div class="page-header">
 			<h1>
 				<i class="fa fa-shopping-cart"></i>
-				CATEGORÍAS <a href="{{ route('category.create') }}" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Categoría</a>
+				CATEGORÍAS <a href="{{ route('admin.category.create') }}" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Categoría</a>
 			</h1>
 
 		</div>
@@ -26,16 +26,14 @@
 						@foreach($categories as $category)
 							<tr>
 								<td>
-									<a href="{{ route('category.edit', $category) }}" class="btn btn-primary">
-										<i class="fa fa-pencil-square"></i>
+
+									<a href="{{ route('admin.category.edit', $category) }}" class="btn btn-primary">
+									<i class="fa fa-pencil-square"></i>
 									</a>
-									{{--<a href="{{ route('admin.category.edit', $category) }}" class="btn btn-primary">--}}
-									{{--<i class="fa fa-pencil-square"></i>--}}
-									{{--</a>--}}
 								</td>
 								<td>
-{{--									{!! Form::open(['route' => ['admin.category.destroy', $category]]) !!}--}}
-									{!! Form::open(['route' => ['category.destroy', $category]]) !!}
+									{!! Form::open(['route' => ['admin.category.destroy', $category]]) !!}
+
         								<input type="hidden" name="_method" value="DELETE">
         								<button onClick="return confirm('Eliminar registro?')" class="btn btn-danger">
         									<i class="fa fa-trash-o"></i>

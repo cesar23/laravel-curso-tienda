@@ -19,8 +19,8 @@
                         @include('admin.partials.errors')
                     @endif
                     
-{{--                    {!! Form::model($category, array('route' => array('admin.category.update', $category))) !!}--}}
-                    {!! Form::model($category, array('route' => array('category.update', $category))) !!}
+                    {!! Form::model($category, array('route' => array('admin.category.update', $category))) !!}
+
 
                         <input type="hidden" name="_method" value="PUT">
         
@@ -63,8 +63,8 @@
                         
                         <div class="form-group">
                             {!! Form::submit('Actualizar', array('class'=>'btn btn-primary')) !!}
-{{--                            <a href="{{ route('admin.category.index') }}" class="btn btn-warning">Cancelar</a>--}}
-                            <a href="{{ route('category.index') }}" class="btn btn-warning">Cancelar</a>
+                            <a href="{{ route('admin.category.index') }}" class="btn btn-warning">Cancelar</a>
+
                         </div>
                     
                     {!! Form::close() !!}

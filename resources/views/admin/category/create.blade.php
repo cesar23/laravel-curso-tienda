@@ -19,8 +19,8 @@
                         @include('admin.partials.errors')
                     @endif
                     
-{{--                    {!! Form::open(['route'=>'admin.category.store']) !!}--}}
-                    {!! Form::open(['route'=>'category.store']) !!}
+                    {!! Form::open(['route'=>'admin.category.store']) !!}
+
 
                         <div class="form-group">
                             <label for="name">Nombre:</label>
@@ -60,8 +60,8 @@
                         
                         <div class="form-group">
                             {!! Form::submit('Guardar', array('class'=>'btn btn-primary')) !!}
-{{--                            <a href="{{ route('admin.category.index') }}" class="btn btn-warning">Cancelar</a>--}}
-                            <a href="{{ route('category.index') }}" class="btn btn-warning">Cancelar</a>
+                            <a href="{{ route('admin.category.index') }}" class="btn btn-warning">Cancelar</a>
+
                         </div>
                     
                     {!! Form::close() !!}

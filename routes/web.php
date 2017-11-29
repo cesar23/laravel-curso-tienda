@@ -114,8 +114,19 @@ Route::get('admin/home', ['as' => 'admin.home', function () {
 }]);
 
 
+    //Route::resource('admin/category', 'Admin\CategoryController');
 
-Route::resource('admin/category', 'Admin\CategoryController');
+Route::resource('admin/category', 'Admin\CategoryController', [
+    'as' => 'admin' //router= admin.category.index
+]);
+Route::resource('admin/product', 'Admin\ProductController', [
+    'as' => 'admin' //router= admin.category.index
+]);
+
+   // Route::resource('admin/product', 'Admin\ProductController');
+
+
+
 
 //Route::resource('category', 'CategoryController');
 

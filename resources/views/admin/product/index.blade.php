@@ -10,6 +10,8 @@
 				<a href="{{ route('admin.product.create') }}" class="btn btn-warning">
 					<i class="fa fa-plus-circle"></i> Producto
 				</a>
+
+
 			</h1>
 		</div>
 		<div class="page">
@@ -57,8 +59,10 @@
             </div>
             
             <hr>
-            
-            <?php echo $products->render(); ?>
+
+{{--            {!! $products->render() !!}--}}
+            {{ $products->links() }}
+
             
         </div>
 
