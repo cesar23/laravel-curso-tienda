@@ -67,6 +67,9 @@ php artisan make:seeder UsersTableSeeder && ping 127.0.0.1 -n 2 > nul
   #curso 09 --Panel de Administracion
   php artisan make:controller  Admin/ProductController -r
   php artisan make:request SaveProductRequest
+  #curso 10 --Panel de Administracion
+  php artisan make:controller  Admin/UserController -r
+php artisan make:request SaveUserRequest
 
  #-----------------------------------------------------------------
  #-----------Crear Middleware

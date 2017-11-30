@@ -57,8 +57,8 @@
             
             <hr>
             
-            <?php echo $users->render(); ?>
-            
+<?php //echo $users->render(); ?>
+            {{ $users->links() }}
         </div>
     </div>
 @stop

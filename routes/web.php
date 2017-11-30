@@ -123,6 +123,9 @@ Route::resource('admin/product', 'Admin\ProductController', [
     'as' => 'admin' //router= admin.category.index
 ]);
 
+Route::resource('admin/user', 'Admin\UserController', [
+    'as' => 'admin' //router= admin.category.index
+]);
    // Route::resource('admin/product', 'Admin\ProductController');
 
 
