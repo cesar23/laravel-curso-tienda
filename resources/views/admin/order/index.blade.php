@@ -58,7 +58,8 @@
             </div>
             <hr>
             
-            <?php echo $orders->render(); ?>
+            <?php //echo $orders->render(); ?>
+            {{ $orders->links() }}
             
         </div>
     </div>

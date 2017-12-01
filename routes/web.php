@@ -45,6 +45,8 @@ Route::get('/', [
     'as' => 'home',
     'uses' => 'StoreController@index'
 ]);
+
+
 Route::get('product/{slug}', [
     'as' => 'product-detail',
     'uses' => 'StoreController@show'
@@ -78,18 +80,23 @@ Route::get('cart/update/{product_slug}/{quantity}', [
     'uses' => 'CartController@update'
 ]);
 
-Route::get('order-detail', [
-    'middleware' => 'auth',
-    'as' => 'order-detail',
-    'uses' => 'CartController@orderDetail'
-]);
 
 
 
 
+Route::group(["middleware" => ['auth']], function () {
 
+    Route::group([ 'middleware' => ['is_user']], function () {
 
+        Route::get('order-detail', [
+            // 'middleware' => 'auth',
+            //'middleware' => 'is_user',
+            'as' => 'order-detail',
+            'uses' => 'CartController@orderDetail'
+        ]);
 
+    });
+});
 
 
 
@@ -107,6 +114,56 @@ Route::get('payment/status', array(
 ));
 
 //----------------------------------------------------------- ADMIN
+//---------------------------1.que  proviene de la  carpeta Admin que esta  en controller
+//---------------------------2. que  use  el middleware auth
+//--
+//Route::group(['namespace' => 'Admin', 'middleware' => ['auth'], 'prefix' => 'admin'], function()
+//{
+//
+//
+//
+//});
+
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['is_admin'], 'namespace' => 'Admin'], function () {
+
+    Route::get('home', function(){
+        return view('admin.home');
+    });
+
+    Route::resource('category', 'CategoryController', [
+        'as' => 'admin' //router= admin.category.index
+    ]);
+
+    Route::resource('product', 'ProductController', [
+        'as' => 'admin' //router= admin.category.index
+    ]);
+
+    Route::resource('user', 'UserController', [
+        'as' => 'admin' //router= admin.category.index
+    ]);
+
+
+
+    Route::get('orders', [
+        'as' => 'admin.order.index',
+        'uses' => 'OrderController@index'
+    ]);
+
+    Route::post('order/get-items', [
+        'as' => 'admin.order.getItems',
+        'uses' => 'OrderController@getItems'
+    ]);
+
+    Route::get('order/{id}', [
+        'as' => 'admin.order.destroy',
+        'uses' => 'OrderController@destroy'
+    ]);
+});
+/*
+
+
 
 Route::get('admin/home', ['as' => 'admin.home', function () {
     //return "dd";
@@ -114,7 +171,7 @@ Route::get('admin/home', ['as' => 'admin.home', function () {
 }]);
 
 
-    //Route::resource('admin/category', 'Admin\CategoryController');
+//Route::resource('admin/category', 'Admin\CategoryController');
 
 Route::resource('admin/category', 'Admin\CategoryController', [
     'as' => 'admin' //router= admin.category.index
@@ -126,77 +183,26 @@ Route::resource('admin/product', 'Admin\ProductController', [
 Route::resource('admin/user', 'Admin\UserController', [
     'as' => 'admin' //router= admin.category.index
 ]);
-   // Route::resource('admin/product', 'Admin\ProductController');
 
 
+Route::get('admin/orders', [
+    'as' => 'admin.order.index',
+    'uses' => 'Admin\OrderController@index'
+]);
+
+Route::post('admin/order/get-items', [
+    'as' => 'admin.order.getItems',
+    'uses' => 'Admin\OrderController@getItems'
+]);
+
+Route::get('admin/order/{id}', [
+    'as' => 'admin.order.destroy',
+    'uses' => 'Admin\OrderController@destroy'
+]);
 
 
-//Route::resource('category', 'CategoryController');
-
-//Route::get('order-detail', [
-//    'middleware' => 'auth:user',
-//    'as' => 'order-detail',
-//    'uses' => 'CartController@orderDetail'
-//]);
-//// Authentication routes...
-//Route::get('auth/login', [
-//    'as' => 'login-get',
-//    'uses' => 'Auth\AuthController@getLogin'
-//]);
-//Route::post('auth/login', [
-//    'as' => 'login-post',
-//    'uses' => 'Auth\AuthController@postLogin'
-//]);
-//Route::get('auth/logout', [
-//    'as' => 'logout',
-//    'uses' => 'Auth\AuthController@getLogout'
-//]);
-//// Registration routes...
-//Route::get('auth/register', [
-//    'as' => 'register-get',
-//    'uses' => 'Auth\AuthController@getRegister'
-//]);
-//Route::post('auth/register', [
-//    'as' => 'register-post',
-//    'uses' => 'Auth\AuthController@postRegister'
-//]);
-//// Paypal
-//// Enviamos nuestro pedido a PayPal
-//Route::get('payment', array(
-//    'as' => 'payment',
-//    'uses' => 'PaypalController@postPayment',
-//));
-//// Después de realizar el pago Paypal redirecciona a esta ruta
-//Route::get('payment/status', array(
-//    'as' => 'payment.status',
-//    'uses' => 'PaypalController@getPaymentStatus',
-//));
-//// ADMIN -------------
-//Route::group(['namespace' => 'Admin', 'middleware' => ['auth'], 'prefix' => 'admin'], function()
-//{
-//    Route::get('home', function(){
-//        return view('admin.home');
-//    });
-//    Route::resource('category', 'CategoryController');
-//    Route::resource('product', 'ProductController');
-//    Route::resource('user', 'UserController');
-//    Route::get('orders', [
-//        'as' => 'admin.order.index',
-//        'uses' => 'OrderController@index'
-//    ]);
-//    Route::post('order/get-items', [
-//        'as' => 'admin.order.getItems',
-//        'uses' => 'OrderController@getItems'
-//    ]);
-//    Route::get('order/{id}', [
-//        'as' => 'admin.order.destroy',
-//        'uses' => 'OrderController@destroy'
-//    ]);
-//});
+*/
 
 
 Auth::routes();
 
-//Route::get('/logout', ['as' => 'logout', 'uses' => 'PageController@logOut']);
-
-//Route::get('/home', 'HomeController@index')->name('home');
